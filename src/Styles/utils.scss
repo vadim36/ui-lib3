@@ -1,0 +1,161 @@
+//!BG, BORDERS, TEXT-COLORS, DISPLAYS LINK, UNDERLINE, OPACITY, POSITION, SHADOW, SIZING, TEXT, VIZIBILITY, SPACES, HOVER and ACTIVE
+
+$utils: (
+  'bg': (
+    options: (
+      'primary': primary, 
+      'secondary': secondary, 
+      'success': success, 
+      'accent': accent, 
+      'secondary-accent': secondary-accent, 
+      'danger': danger
+    ),
+    styles: (
+      background-color: colors
+    )
+  ),
+  'bg-gradient': (
+    options: (
+      'primary': primary, 
+      'secondary': secondary, 
+      'success': success, 
+      'accent': accent, 
+      'secondary-accent': secondary-accent, 
+      'danger': danger
+    ),
+    styles: (
+      background-image: gradients
+    )
+  ),
+  'bg-opacity': (
+    options: (
+      '0': 0,
+      '25': .25,
+      '50': .50,
+      '75': .75,
+      '100': 1
+    ),
+    requires: (
+      'bg'
+    ),
+    alternative-requires: (
+      'bg-gradient'
+    ),
+    styles: (
+      --bg-color-opacity: opacities
+    )
+  ),
+  'border': (
+    options-1: (
+      'primary': primary, 
+      'secondary': secondary, 
+      'success': success, 
+      'accent': accent, 
+      'secondary-accent': secondary-accent, 
+      'danger': danger
+    ),
+    options-2: (
+      'top': top, 
+      'right': right, 
+      'bottom': bottom, 
+      'left': left
+    ),
+    options-3: (
+      '1': 1,
+      '2': 2,
+      '3': 3,
+      '4': 4,
+      '5': 5 
+    ),
+    styles: (
+      border: borders
+    )
+  ),
+  'br': (
+    options: ( 
+     '1': 1,
+     '2': 2,
+     '3': 3,
+     '4': 4,
+     '5': 5 
+    ),
+    styles: (
+      border-radius: border-radii
+    )
+  ),
+  'text-color': (
+    options: (
+      'primary': primary, 
+      'secondary': secondary, 
+      'success': success, 
+      'accent': accent, 
+      'secondary-accent': secondary-accent, 
+      'danger': danger
+    ),
+    styles: (
+      color: colors
+    )
+  ),
+  'display': (
+    options: (
+      'none': none,
+      'inline': inline,
+      'block': block,
+      'inline-block': inline-block,
+      'flex': flex,
+      'inline-flex': inline-flex,
+      'grid': grid
+    ),
+    styles: (
+      display: displays
+    )
+  ),
+  'user-select': (
+    options: (
+      'all': all,
+      'auto': auto,
+      'none': none
+    ),
+    styles: (
+      user-select: user-selects
+    )
+  ),
+  'pointer-events': (
+    options: (
+      'all': all,
+      'auto': auto,
+      'none': none
+    ),
+    styles: (
+      pointer-events: pointer-events
+    )
+  ),
+  'underline': (
+    options-1: (
+      'primary': primary, 
+      'secondary': secondary, 
+      'success': success, 
+      'accent': accent, 
+      'secondary-accent': secondary-accent, 
+      'danger': danger
+    ),
+    options-2: (
+      'solid': solid,
+      'double': double,
+      'dotted': dotted,
+      'dashed': dashed,
+      'wavy': wavy
+    ),
+    options-3: (
+      '1': 1,
+      '2': 2,
+      '3': 3,
+      '4': 4,
+      '5': 5 
+    ),
+    styles: (
+      text-decoration: underline colors decoration-styles
+      text-underline-offset: underline-offsets
+    )
+  ),
+);
