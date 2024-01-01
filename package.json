@@ -1,0 +1,15 @@
+{
+  "name": "ui-lib3",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx webpack --mode development",
+    "build": "npx webpack --mode production",
+    "watch": "npx webpack --mode development --watch"
+  },
+  "author": "Vadim Medvedev <vadim130809@gmail.com>",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ]
+}
