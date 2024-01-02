@@ -1,0 +1,44 @@
+$util-values: (
+  bg: colors,
+  bg-gradients: gradients,
+  bg-opacity: opacities,
+  border: (
+    'border-colors': border-colors,
+    'border-directions': border-directions,
+    'border-sizes': border-sizes,
+    'border-styles': border-styles
+  ),
+  br: border-radii,
+  text-color: colors,
+  display: displays,
+  user-select: user-selects,
+  pointer-events: pointer-events,
+  underline: (
+    'colors': colors,
+    'decoration-styles': decoration-styles,
+    'underline-offsets': underline-offsets
+  ),
+  opacity: opacities,
+  opacity-hover: opacities-hover,
+  position: positions,
+  shadow: shadows,
+  w: widths,
+  h: heights,
+  text-align: text-aligns,
+  text-wrap: text-wraps,
+  word-break: word-breaks,
+  text-transform: text-transforms,
+  fz: font-sizes,
+  font-weight: font-weights,
+  font-style: font-styles,
+  font: fonts,
+  text-decoration: text-decorations,
+  m: (
+    'margin-directions': margin-directions,
+    'margin-size': margin-size
+  ),
+  p: (
+    'padding-directions': padding-directions,
+    'padding-size': padding-size
+  )
+);

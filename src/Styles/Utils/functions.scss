@@ -1,0 +1,175 @@
+@function bg-styles($value) {
+  @return (
+    --bg-color-opacity: 1,
+    background-color: hsl(hue($value), saturation($value), lightness($value), 
+      var(--bg-color-opacity))
+  );
+}
+
+@function bg-gradient-styles($value) {
+  @return (
+    --bg-color-opacity: 1,
+    background-image: $value
+  );
+}
+
+@function bg-opacity-styles($value) {
+  @return (
+    --bg-color-opacity: $value
+  );
+}
+
+@function border-styles($value) {
+  $border-colors: map-get($value, border-colors);
+  $border-direction: map-get($value, border-directions);
+  $border-size: map-get($value, border-sizes);
+  $border-style: map-get($value, border-styles);
+
+  @return (
+    border: $border-size $border-style $border-color,
+    border-#{$border-direction}: $border-size $border-style $border-color
+  );
+}
+
+@function br-styles($value) {
+  @return (
+    border-radius: $value
+  );
+}
+
+@function text-color-styles($value) {
+  @return (
+    color: $value
+  );
+}
+
+@function display-styles($value) {
+  @return (
+    display: $value
+  );
+}
+
+@function user-select-styles($value) {
+  @return (
+    user-select: $value
+  );
+}
+
+@function pointer-event-styles($value) {
+  @return (
+    pointer-events: $value
+  );
+}
+
+@function underline-styles($value) {
+  $color: map-get($value, 'colors');
+  $decoration-style: map-get($value, 'decoration-styles');
+  $underline-offset: map-get($value, 'underline-offsets');
+
+  @return (
+    text-decoration: underline $color $decoration-style,
+    text-underline-offset: $underline-offset
+  );
+}
+
+@function opacity-styles($value) {
+  @return (
+    opacity: $value
+  );
+}
+
+@function opacity-hover-styles($value) {
+  @return (
+    _pseudo: (
+      hover: (
+        opacity: $value
+      )
+    )
+  );
+}
+
+@function position-styles($value) {
+  @return (
+    position: $value
+  );
+}
+
+@function shadow-styles($value) {
+  @return (
+    shadow: 0 calc($value / 8) calc ($value / 1.5) color
+  );
+}
+
+@function w-styles($value) {
+  @return (
+    width: calc($value * 1%)
+  );
+}
+
+@function h-styles($value) {
+  @return (
+    width: calc($value * 1%)
+  );
+}
+
+@function text-align-styles($value) {
+  @return (
+    text-align: $value
+  );
+}
+
+@function text-wrap-styles($value) {
+  @return (
+    text-wrap: $value
+  );
+}
+
+@function word-break-styles($value) {
+  @return (
+    word-break: $value
+  );
+}
+
+@function text-transform-styles($value) {
+  @return (
+    text-transform: $value
+  );
+}
+
+@function fz-styles($value) {
+  @return (
+    font-size: $value
+  );
+}
+
+@function font-weight-styles($value) {
+  @return (
+    font-weight: $value
+  );
+}
+
+@function font-style-styles($value) {
+  @return (
+    font-style: $value
+  );
+}
+
+@function m-styles($value) {
+  $direction: map-get($value, margin-directions);
+  $size: map-get($value, margin-size);
+
+  @return (
+    margin: calc($size * .25rem),
+    margin-#{$direction}: calc($size * .25rem)
+  );
+}
+
+@function p-styles($value) {
+  $direction: map-get($value, padding-directions);
+  $size: map-get($value, padding-size);
+
+  @return (
+    padding: calc($size * .25rem),
+    padding-#{$direction}: calc($size * .25rem)
+  );
+}
