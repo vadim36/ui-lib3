@@ -54,22 +54,90 @@ $root: (
   )
 );
 
+
+@function bg-styles($value) {
+  @return (
+    --bg-color-opacity: 1,
+    background-color: hsl(hue($value), saturation($value), lightness($value), 
+      var(--bg-color-opacity))
+  );
+}
+
+@function bg-gradient-styles($value) {
+  @return (
+    background-image: $value
+  );
+}
+
+@function bg-opacity-styles($value) {
+  @return (
+    --bg-color-opacity: $value
+  );
+}
+
+@function border-styles($value) {
+  $border-colors: map-get($value, border-colors);
+  $border-direction: map-get($value, border-directions);
+  $border-size: map-get($value, border-sizes);
+  $border-style: map-get($value, border-styles);
+
+  @return (
+    border: $border-size $border-style $border-color,
+    border-#{$border-direction}: $border-size $border-style $border-color,
+  );
+}
+
+@function br-styles($value) {
+  @return (
+    border-radius: $value
+  );
+}
+
+@function text-color-styles($value) {
+  @return (
+    color: $value
+  );
+}
+
+@function display-styles($value) {
+  @return (
+    display: $value
+  );
+}
+
+@function user-select-styles($value) {
+  @return (
+    user-select: $value
+  );
+}
+
+@function pointer-event-styles($value) {
+  @return (
+    pointer-events: $value
+  );
+}
+
+@function underline-styles($value) {
+  $color: map-get($value, 'colors');
+  $decoration-style: map-get($value, 'decoration-styles');
+  $underline-offset: map-get($value, 'underline-offsets');
+
+  @return (
+    text-decoration: underline $color $decoration-style,
+    text-underline-offset: $underline-offset
+  );
+}
+
 $utils: (
   'bg': (
     options: $states,
     value: colors,
-    styles: (
-      --bg-color-opacity: 1,
-      background-color: hsl(hue(colors), saturation(colors), lightness(colors), 
-        var(--bg-color-opacity))
-    )
+    styles: bg-styles(map-get($utils, 'bg', value))
   ),
   'bg-gradient': (
     options: $states,
     value: gradients,
-    styles: (
-      background-image: gradients
-    )
+    styles: bg-gradient-styles(map-get($utils, 'bg-gradient', value))
   ),
   'bg-opacity': (
     options: $abstract-points-1,
@@ -80,66 +148,57 @@ $utils: (
       'bg-gradient'
     ),
     value: opacities,
-    styles: (
-      --bg-color-opacity: opacities
-    )
+    styles: bg-opacity-styles(map-get($utils, 'bg-opacity', value))
   ),
   'border': (
     options-1: $states,
     options-2: $directions,
     options-3: $abstract-points-2,
-    value: borders,
-    styles: (
-      border: borders
-    )
+    options-4: $borderline-styles,
+    value: (
+      'border-colors': border-colors,
+      'border-directions': border-directions,
+      'border-sizes': border-sizes,
+      'border-styles': border-styles
+    ),
+    styles: border-styles(map-get($utils, 'border', value))
   ),
   'br': (
     options: $abstract-points-2,
     value: border-radii,
     styles: (
-      border-radius: border-radii
+      border-radius: br-styles(map-get($utils, 'br', value))
     )
   ),
   'text-color': (
     options: $states,
     value: colors,
-    styles: (
-      color: colors
-    )
+    styles: text-color-styles(map-get($utils, 'text-color', value))
   ),
   'display': (
     options: $displays,
     value: displays
-    styles: (
-      display: displays
-    )
+    styles: display-styles(map-get($utils, 'display', value))
   ),
   'user-select': (
     options: $abstract-states,
     value: user-selects,
-    styles: (
-      user-select: user-selects
-    )
+    styles: user-select-styles(map-get($utils, 'user-select', value))
   ),
   'pointer-events': (
     options: $abstract-states,
     value: pointer-events,
-    styles: (
-      pointer-events: pointer-events
-    )
+    styles: pointer-event-styles(map-get($utils, 'pointer-events', value))
   ),
   'underline': (
     options-1: $states,
     options-2: $borderline-styles,
     options-3: $abstract-points-2,
     value: (
-      colors,
-      decoration-styles,
-      underline-offsets
+      'colors': colors,
+      'decoration-styles': decoration-styles,
+      'underline-offsets': underline-offsets
     )
-    styles: (
-      text-decoration: underline colors decoration-styles
-      text-underline-offset: underline-offsets
-    )
+    styles: underline-styles(map-get($utils, 'underline', value))
   ),
 );
