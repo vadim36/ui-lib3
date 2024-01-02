@@ -1,5 +1,3 @@
-//!BG, BORDERS, TEXT-COLORS, DISPLAYS, LINK, UNDERLINE, OPACITY, POSITION, SHADOW, SIZING, TEXT, VIZIBILITY, SPACES, HOVER and ACTIVE
-
 $states: (
   'primary': primary, 
   'secondary': secondary, 
@@ -31,11 +29,17 @@ $abstract-states: (
   'none': none
 );
 
-$directions: (
+$directions-1: (
   'top': top, 
   'right': right, 
   'bottom': bottom, 
   'left': left
+);
+
+$directions-2: (
+  'start': start,
+  'center': center,
+  'end': end
 );
 
 $displays: (
@@ -64,6 +68,49 @@ $positions: (
   'sticky': sticky
 );
 
+$wrapping: (
+  'wrap': wrap,
+  'nowrap': nowrap
+);
+
+$breaking: (
+  'normal': normal,
+  'break-all': break-all,
+  'keep-all': keep-all,
+  'break-word': break-word
+);
+
+$transforms: (
+  'lowercase': lowercase,
+  'uppercase': uppercase,
+  'capitalize': capitalize,
+);
+
+$boldness: (
+  'lighter': lighter,
+  'light': light,
+  'normal': normal,
+  'medium': medium,
+  'semibold': semibold,
+  'bold': bold,
+  'bolder': bolder
+);
+
+$text-styles: (
+  'normal': normal,
+  'italic': italic
+);
+
+$fonts: (
+  'primary': primary,
+  'monospace': monospace
+);
+
+$text-decorations: (
+  'underline': underline,
+  'line-through': line-through,
+  'none': none
+);
 
 @function bg-styles($value) {
   @return (
@@ -172,6 +219,74 @@ $positions: (
   );
 }
 
+@function h-styles($value) {
+  @return (
+    width: calc($value * 1%)
+  );
+}
+
+@function text-align-styles($value) {
+  @return (
+    text-align: $value
+  );
+}
+
+@function text-wrap-styles($value) {
+  @return (
+    text-wrap: $value
+  );
+}
+
+@function word-break-styles($value) {
+  @return (
+    word-break: $value
+  );
+}
+
+@function text-transform-styles($value) {
+  @return (
+    text-transform: $value
+  );
+}
+
+@function fz-styles($value) {
+  @return (
+    font-size: $value
+  );
+}
+
+@function font-weight-styles($value) {
+  @return (
+    font-weight: $value
+  );
+}
+
+@function font-style-styles($value) {
+  @return (
+    font-style: $value
+  );
+}
+
+@function m-styles($value) {
+  $direction: map-get($value, margin-directions);
+  $size: map-get($value, margin-size);
+
+  @return (
+    margin: calc($size * .25rem),
+    margin-#{$direction}: calc($size * .25rem)
+  );
+}
+
+@function p-styles($value) {
+  $direction: map-get($value, padding-directions);
+  $size: map-get($value, padding-size);
+
+  @return (
+    padding: calc($size * .25rem),
+    padding-#{$direction}: calc($size * .25rem)
+  );
+}
+
 $utils: (
   'bg': (
     options: $states,
@@ -196,7 +311,7 @@ $utils: (
   ),
   'border': (
     options-1: $states,
-    options-2: $directions,
+    options-2: $directions-1,
     options-3: $abstract-points-2,
     options-4: $borderline-styles,
     value: (
@@ -210,9 +325,7 @@ $utils: (
   'br': (
     options: $abstract-points-2,
     value: border-radii,
-    styles: (
-      border-radius: br-styles(map-get($utils, 'br', value))
-    )
+    styles: br-styles(map-get($utils, 'br', value))
   ),
   'text-color': (
     options: $states,
@@ -269,5 +382,73 @@ $utils: (
     options: $abstract-points-1,
     value: widths,
     styles: w-styles(map-get($utils, 'w', value))
+  ),
+  'h': (
+    options: $abstract-points-1,
+    value: heights,
+    styles: h-styles(map-get($utils, 'h', value))
+  ),
+  'text-align': (
+    options: $directions-2,
+    value: text-aligns,
+    styles: text-align-styles(map-get($utils, 'text-align', value))
+  )
+  'text-wrap': (
+    options: $wrapping,
+    value: text-wraps,
+    styles: text-wrap-styles(map-get($utils, 'text-wrap', value))    
+  ),
+  'word-break': (
+    options: $breaking,
+    value: word-breaks,
+    styles: word-break-styles(map-get($utils, 'word-break', value))  
+  ),
+  'text-transform': (
+    options: $transforms,
+    value: text-transforms,
+    styles: text-transform-styles(map-get($utils, 'text-transform', value))
+  ),
+  'fz': (
+    options: $abstract-points-2,
+    value: font-sizes,
+    styles: fz-styles(map-get($utils, 'fz', value))
+  ),
+  'font-weight': (
+    options: $boldness,
+    value: font-weights,
+    styles: font-weight-styles(map-get($utils, 'font-weight', value))
+  ),
+  'font-style': (
+    options: $text-styles,
+    value: font-styles,
+    styles: font-style-styles(map-get($utils, 'font-style', value))
+  ),
+  'font': (
+    options: $fonts,
+    value: fonts,
+    styles: font-styles(map-get($utils, 'font', value))
+  ),
+  'text-decoration': (
+    options: $text-decorations,
+    value: text-decorations,
+    styles: text-decoration-styles(map-get($utils, 'text-decoration', value))
+  ),
+  'm': (
+    options-1: $directions-1,
+    options-2: $abstract-points-2,
+    value: (
+      'margin-directions': margin-directions,
+      'margin-size': margin-size
+    ),
+    styles: m-styles(map-get($utils, 'm', value))
+  ),
+  'p': (
+    options-1: $directions-1,
+    options-2: $abstract-points-2,
+    value: (
+      'padding-directions': padding-directions,
+      'padding-size': padding-size
+    ),
+    styles: p-styles(map-get($utils, 'p', value))
   )
 );
