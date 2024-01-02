@@ -1,21 +1,21 @@
 @function bg-styles($value) {
   @return (
     --bg-color-opacity: 1,
-    background-color: hsl(hue($value), saturation($value), lightness($value), 
+    background-color: hsla(hue($value), saturation($value), lightness($value), 
       var(--bg-color-opacity))
   );
 }
 
 @function bg-gradient-styles($value) {
   @return (
-    --bg-color-opacity: 1,
     background-image: $value
   );
 }
 
 @function bg-opacity-styles($value) {
   @return (
-    --bg-color-opacity: $value
+    --bg-color-opacity: $value,
+    --gradient-color: $value
   );
 }
 

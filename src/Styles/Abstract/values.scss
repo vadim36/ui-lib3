@@ -1,0 +1,169 @@
+:root {
+  --h-primary: 0;
+  --h-accent: 220;
+  --h-secondary-accent: 45;
+  --h-success: 120;
+
+  --s-50: 50%;
+  --s-75: 75%;
+  --s-100: 100%;
+
+  --l-0: 0%;
+  --l-50: 50%;
+  --l-55: 55%;
+  --l-100: 100;
+
+  --hsl-primary-color: var(--h-primary), var(--s-100), var(--l-100);
+  --hsl-secondary-color: var(--h-primary), var(--s-100), var(--l-0);
+  --hsl-accent-color: var(--h-accent), var(--s-50), var(--l-50);
+  --hsl-secondary-accent-color: var(--h-secondary-accent), var(--s-100), var(--l-50);
+  --hsl-success-color: var(--h-success), var(--s-50), var(--l-50);
+  --hsl-danger-color: var(--h-primary), var(--s-75), var(--l-55);
+
+  --primary-color: hsl( var(--h-primary), var(--s-100), var(--l-100));
+  --secondary-color: hsl( var(--h-primary), var(--s-100), var(--l-0));
+  --accent-color: hsl( var(--h-accent), var(--s-50), var(--l-50));
+  --secondary-accent-color: hsl( var(--h-secondary-accent), var(--s-100), var(--l-50));
+  --success-color: hsl( var(--h-success), var(--s-50), var(--l-50));
+  --danger-color: hsl( var(--h-primary), var(--s-75), var(--l-55));
+}
+
+$values: (
+  hsl-colors: (
+    'primary': var(--hsl-primary-color),
+    'secondary': var(--hsl-secondary-color),
+    'accent': var(--hsl-accent-color),
+    'secondary-accent': var(--hsl-secondary-accent-color),
+    'success': var(--hsl-success-color),
+    'danger': var(--hsl-danger-color)
+  ),
+  colors: ( 
+    'primary': var(--primary-color),
+    'secondary': var(--secondary-color),
+    'accent': var(--accent-color),   
+    'secondary-accent': var(--secondary-accent-color),
+    'success': var(--success-color),
+    'danger': var(--danger-color)
+  ),
+  gradients: (
+    'primary': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-primary-color), var(--gradient-color)),
+      hsl(var(--hsl-primary-color), .5)
+    ),
+    'secondary': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-secondary-color), var(--gradient-color)),
+      hsl(var(--hsl-secondary-color), .5)
+    ),
+    'success': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-success-color), var(--gradient-color)),
+      hsl(var(--hsl-success-color), .5)
+    ),
+    'accent': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-accent-color), var(--gradient-color)),
+      hsl(var(--hsl-accent-color), .5)
+    ),
+    'secondary-accent': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-secondary-accent-color), var(--gradient-color)),
+      hsl(var(--hsl-secondary-accent-color), .5)
+    ),
+    'danger': linear-gradient(
+      to bottom right,
+      hsl(var(--hsl-danger-color), var(--gradient-color)),
+      hsl(var(--hsl-danger-color), .5)
+    )
+  ),
+  opacities: (
+    '0': 0,
+    '25': .25,
+    '50': .50,
+    '75': .75,
+    '100': 1
+  ),
+  border-colors: (
+    'primary': var(--hsl-primary-color),
+    'secondary': var(--hsl-secondary-color),
+    'accent': var(--hsl-accent-color),
+    'secondary-accent': var(--hsl-secondary-accent-color),
+    'success': var(--hsl-success-color),
+    'danger': var(--hsl-danger-color)
+  ),
+  border-directions: (
+    'top': top, 
+    'right': right, 
+    'bottom': bottom, 
+    'left': left
+  ),
+  border-sizes: (
+    '1': 1px,
+    '2': 2px,
+    '3': 3px,
+    '4': 4px,
+    '5': 5px 
+  ),
+  border-styles: (
+    'solid': solid,
+    'double': double,
+    'dotted': dotted,
+    'dashed': dashed,
+    'wavy': wavy
+  ),
+  border-radii: (
+    '1': .25rem,
+    '2': .375rem,
+    '3': .5rem,
+    '4': .7rem,
+    '5': 1rem 
+  ),
+  text-colors: (
+    'primary': var(--hsl-primary-color),
+    'secondary': var(--hsl-secondary-color),
+    'accent': var(--hsl-accent-color),
+    'secondary-accent': var(--hsl-secondary-accent-color),
+    'success': var(--hsl-success-color),
+    'danger': var(--hsl-danger-color)
+  ),
+  displays: (
+    'none': none,
+    'inline': inline,
+    'block': block,
+    'inline-block': inline-block,
+    'flex': flex,
+    'inline-flex': inline-flex,
+    'grid': grid
+  ),
+  user-selects: (
+    'all': all,
+    'auto': auto,
+    'none': none
+  ),
+  pointer-events: (
+    'all': all,
+    'auto': auto,
+    'none': none
+  ),
+  underline-colors: (
+    'primary': var(--hsl-primary-color),
+    'secondary': var(--hsl-secondary-color),
+    'accent': var(--hsl-accent-color),
+    'secondary-accent': var(--hsl-secondary-accent-color),
+    'success': var(--hsl-success-color),
+    'danger': var(--hsl-danger-color)
+  ),
+  underline-decoration-styles: (
+    'solid': solid,
+    'double': double,
+    'dotted': dotted,
+    'dashed': dashed,
+    'wavy': wavy
+  ),
+  underline-offsets: (
+    
+  )
+);
+
+@debug $values;
