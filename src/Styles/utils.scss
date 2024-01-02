@@ -1,57 +1,67 @@
-//!BG, BORDERS, TEXT-COLORS, DISPLAYS LINK, UNDERLINE, OPACITY, POSITION, SHADOW, SIZING, TEXT, VIZIBILITY, SPACES, HOVER and ACTIVE
+//!BG, BORDERS, TEXT-COLORS, DISPLAYS, LINK, UNDERLINE, OPACITY, POSITION, SHADOW, SIZING, TEXT, VIZIBILITY, SPACES, HOVER and ACTIVE
 
-$root: (
-  options: (
-    $states: (
-      'primary': primary, 
-      'secondary': secondary, 
-      'success': success, 
-      'accent': accent, 
-      'secondary-accent': secondary-accent, 
-      'danger': danger
-    ),
-    $abstract-points-1: (
-      '0': 0,
-      '25': .25,
-      '50': .50,
-      '75': .75,
-      '100': 1
-    ),
-    $abstract-points-2: (
-      '1': 1,
-      '2': 2,
-      '3': 3,
-      '4': 4,
-      '5': 5 
-    ),
-    $abstract-states: (
-      'all': all,
-      'auto': auto,
-      'none': none
-    ),
-    $directions: (
-      'top': top, 
-      'right': right, 
-      'bottom': bottom, 
-      'left': left
-    ),
-    $displays: (
-      'none': none,
-      'inline': inline,
-      'block': block,
-      'inline-block': inline-block,
-      'flex': flex,
-      'inline-flex': inline-flex,
-      'grid': grid
-    ),
-    $borderline-styles: (
-      'solid': solid,
-      'double': double,
-      'dotted': dotted,
-      'dashed': dashed,
-      'wavy': wavy
-    )
-  )
+$states: (
+  'primary': primary, 
+  'secondary': secondary, 
+  'success': success, 
+  'accent': accent, 
+  'secondary-accent': secondary-accent, 
+  'danger': danger
+);
+
+$abstract-points-1: (
+  '0': 0,
+  '25': .25,
+  '50': .50,
+  '75': .75,
+  '100': 1
+);
+
+$abstract-points-2: (
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5 
+);
+
+$abstract-states: (
+  'all': all,
+  'auto': auto,
+  'none': none
+);
+
+$directions: (
+  'top': top, 
+  'right': right, 
+  'bottom': bottom, 
+  'left': left
+);
+
+$displays: (
+  'none': none,
+  'inline': inline,
+  'block': block,
+  'inline-block': inline-block,
+  'flex': flex,
+  'inline-flex': inline-flex,
+  'grid': grid
+);
+
+$borderline-styles: (
+  'solid': solid,
+  'double': double,
+  'dotted': dotted,
+  'dashed': dashed,
+  'wavy': wavy
+);
+
+$positions: (
+  'static': static,
+  'relative': relative,
+  'absolute': absolute,
+  'fixed': fixed,
+  'sticky': sticky
 );
 
 
@@ -128,6 +138,40 @@ $root: (
   );
 }
 
+@function opacity-styles($value) {
+  @return (
+    opacity: $value
+  );
+}
+
+@function opacity-hover-styles($value) {
+  @return (
+    _pseudo: (
+      hover: (
+        opacity: value
+      )
+    )
+  );
+}
+
+@function position-styles($value) {
+  @return (
+    position: $value
+  );
+}
+
+@function shadow-styles($value) {
+  @return (
+    shadow: 0 calc($value / 8) calc ($value / 1.5) color
+  );
+}
+
+@function w-styles($value) {
+  @return (
+    width: calc($value * 1%)
+  );
+}
+
 $utils: (
   'bg': (
     options: $states,
@@ -201,4 +245,29 @@ $utils: (
     )
     styles: underline-styles(map-get($utils, 'underline', value))
   ),
+  'opacity': (
+    options: $abstract-points-1,
+    value: opacities,
+    styles: opacity-styles(map-get($utils, 'opacity', value))
+  ),
+  'opacity-hover': (
+    options: $abstract-points-1,
+    value: opacities-hover,
+    styles: opacity-hover-styles(map-get($utils, 'opacity-hover', value))
+  ),
+  'position': (
+    options: $positions,
+    value: positions,
+    styles: position-styles(map-get($utils, 'position', value))
+  ),
+  'shadow': (
+    options: $abstract-points-2,
+    value: shadows,
+    styles: shadow-styles(map-get($utils, 'shadow', value))
+  ),
+  'w': (
+    options: $abstract-points-1,
+    value: widths,
+    styles: w-styles(map-get($utils, 'w', value))
+  )
 );
