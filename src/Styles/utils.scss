@@ -122,6 +122,7 @@ $text-decorations: (
 
 @function bg-gradient-styles($value) {
   @return (
+    --bg-color-opacity: 1,
     background-image: $value
   );
 }
@@ -140,7 +141,7 @@ $text-decorations: (
 
   @return (
     border: $border-size $border-style $border-color,
-    border-#{$border-direction}: $border-size $border-style $border-color,
+    border-#{$border-direction}: $border-size $border-style $border-color
   );
 }
 
@@ -195,7 +196,7 @@ $text-decorations: (
   @return (
     _pseudo: (
       hover: (
-        opacity: value
+        opacity: $value
       )
     )
   );
@@ -287,16 +288,61 @@ $text-decorations: (
   );
 }
 
+$values: (
+  bg: colors,
+  bg-gradients: gradients,
+  bg-opacity: opacities,
+  border: (
+    'border-colors': border-colors,
+    'border-directions': border-directions,
+    'border-sizes': border-sizes,
+    'border-styles': border-styles
+  ),
+  br: border-radii,
+  text-color: colors,
+  display: displays,
+  user-select: user-selects,
+  pointer-events: pointer-events,
+  underline: (
+    'colors': colors,
+    'decoration-styles': decoration-styles,
+    'underline-offsets': underline-offsets
+  ),
+  opacity: opacities,
+  opacity-hover: opacities-hover,
+  position: positions,
+  shadow: shadows,
+  w: widths,
+  h: heights,
+  text-align: text-aligns,
+  text-wrap: text-wraps,
+  word-break: word-breaks,
+  text-transform: text-transforms,
+  fz: font-sizes,
+  font-weight: font-weights,
+  font-style: font-styles,
+  font: fonts,
+  text-decoration: text-decorations,
+  m: (
+    'margin-directions': margin-directions,
+    'margin-size': margin-size
+  ),
+  p: (
+    'padding-directions': padding-directions,
+    'padding-size': padding-size
+  )
+);
+
 $utils: (
   'bg': (
     options: $states,
-    value: colors,
-    styles: bg-styles(map-get($utils, 'bg', value))
+    value: map-get($values, bg),
+    styles: bg-styles(map-get($values, bg))
   ),
   'bg-gradient': (
     options: $states,
-    value: gradients,
-    styles: bg-gradient-styles(map-get($utils, 'bg-gradient', value))
+    value: map-get($values, bg-gradient),
+    styles: bg-gradient-styles(map-get($values, bg-gradient))
   ),
   'bg-opacity': (
     options: $abstract-points-1,
@@ -306,149 +352,143 @@ $utils: (
     alternative-requires: (
       'bg-gradient'
     ),
-    value: opacities,
-    styles: bg-opacity-styles(map-get($utils, 'bg-opacity', value))
+    value: map-get($values, bg-opacity),
+    styles: bg-opacity-styles(map-get($values, bg-opacity))
   ),
   'border': (
     options-1: $states,
     options-2: $directions-1,
     options-3: $abstract-points-2,
     options-4: $borderline-styles,
-    value: (
-      'border-colors': border-colors,
-      'border-directions': border-directions,
-      'border-sizes': border-sizes,
-      'border-styles': border-styles
-    ),
-    styles: border-styles(map-get($utils, 'border', value))
+    value: map-get($values, border),
+    styles: border-styles(map-get($values, border))
   ),
   'br': (
     options: $abstract-points-2,
-    value: border-radii,
-    styles: br-styles(map-get($utils, 'br', value))
+    value: map-get($values, br),
+    styles: br-styles(map-get($values, br))
   ),
   'text-color': (
     options: $states,
-    value: colors,
-    styles: text-color-styles(map-get($utils, 'text-color', value))
+    value: map-get($values, text-color),
+    styles: text-color-styles(map-get($values, text-color))
   ),
   'display': (
     options: $displays,
-    value: displays
-    styles: display-styles(map-get($utils, 'display', value))
+    value: map-get($values, display),
+    styles: display-styles(map-get($values, display))
   ),
   'user-select': (
     options: $abstract-states,
-    value: user-selects,
-    styles: user-select-styles(map-get($utils, 'user-select', value))
+    value: map-get($values, user-select),
+    styles: user-select-styles(map-get($values, user-select))
   ),
   'pointer-events': (
     options: $abstract-states,
-    value: pointer-events,
-    styles: pointer-event-styles(map-get($utils, 'pointer-events', value))
+    value: map-get($values, pointer-events),
+    styles: pointer-event-styles(map-get($values, pointer-events))
   ),
   'underline': (
     options-1: $states,
     options-2: $borderline-styles,
     options-3: $abstract-points-2,
-    value: (
-      'colors': colors,
-      'decoration-styles': decoration-styles,
-      'underline-offsets': underline-offsets
-    )
-    styles: underline-styles(map-get($utils, 'underline', value))
+    value: map-get($values, underline),
+    styles: underline-styles(map-get($values, underline))
   ),
   'opacity': (
     options: $abstract-points-1,
-    value: opacities,
-    styles: opacity-styles(map-get($utils, 'opacity', value))
+    value: map-get($values, opacity),
+    styles: opacity-styles(map-get($values, opacity))
   ),
   'opacity-hover': (
     options: $abstract-points-1,
-    value: opacities-hover,
-    styles: opacity-hover-styles(map-get($utils, 'opacity-hover', value))
+    value: map-get($values, opacity-hover),
+    styles: opacity-hover-styles(map-get($values, opacity-hover))
   ),
   'position': (
     options: $positions,
-    value: positions,
-    styles: position-styles(map-get($utils, 'position', value))
+    value: map-get($values, position),
+    styles: position-styles(map-get($values, position))
   ),
   'shadow': (
     options: $abstract-points-2,
-    value: shadows,
-    styles: shadow-styles(map-get($utils, 'shadow', value))
+    value: map-get($values, shadow),
+    styles: shadow-styles(map-get($values, shadow))
   ),
   'w': (
     options: $abstract-points-1,
-    value: widths,
-    styles: w-styles(map-get($utils, 'w', value))
+    value: map-get($values, w),
+    styles: w-styles(map-get($values, w))
   ),
   'h': (
     options: $abstract-points-1,
-    value: heights,
-    styles: h-styles(map-get($utils, 'h', value))
+    value: map-get($values, h),
+    styles: h-styles(map-get($values, h))
   ),
   'text-align': (
     options: $directions-2,
-    value: text-aligns,
-    styles: text-align-styles(map-get($utils, 'text-align', value))
-  )
+    value: map-get($values, text-align),
+    styles: text-align-styles(map-get($values, text-align))
+  ),
   'text-wrap': (
     options: $wrapping,
-    value: text-wraps,
-    styles: text-wrap-styles(map-get($utils, 'text-wrap', value))    
+    value: map-get($values, text-wrap),
+    styles: text-wrap-styles(map-get($values, text-wrap))    
   ),
   'word-break': (
     options: $breaking,
-    value: word-breaks,
-    styles: word-break-styles(map-get($utils, 'word-break', value))  
+    value: map-get($values, word-break),
+    styles: word-break-styles(map-get($values, word-break))  
   ),
   'text-transform': (
     options: $transforms,
-    value: text-transforms,
-    styles: text-transform-styles(map-get($utils, 'text-transform', value))
+    value: map-get($values, text-transform),
+    styles: text-transform-styles(map-get($values, text-transform))
   ),
   'fz': (
     options: $abstract-points-2,
-    value: font-sizes,
-    styles: fz-styles(map-get($utils, 'fz', value))
+    value: map-get($values, fz),
+    styles: fz-styles(map-get($values, fz))
   ),
   'font-weight': (
     options: $boldness,
-    value: font-weights,
-    styles: font-weight-styles(map-get($utils, 'font-weight', value))
+    value: map-get($values, font-weight),
+    styles: font-weight-styles(map-get($values, font-weight))
   ),
   'font-style': (
     options: $text-styles,
-    value: font-styles,
-    styles: font-style-styles(map-get($utils, 'font-style', value))
+    value: map-get($values, font-styles),
+    styles: font-style-styles(map-get($values, font-styles))
   ),
   'font': (
     options: $fonts,
-    value: fonts,
-    styles: font-styles(map-get($utils, 'font', value))
+    value: map-get($values, font),
+    styles: font-styles(map-get($values, font))
   ),
   'text-decoration': (
     options: $text-decorations,
-    value: text-decorations,
-    styles: text-decoration-styles(map-get($utils, 'text-decoration', value))
+    value: map-get($values, text-decorations),
+    styles: text-decoration-styles(map-get($values, text-decorations))
   ),
   'm': (
     options-1: $directions-1,
     options-2: $abstract-points-2,
-    value: (
-      'margin-directions': margin-directions,
-      'margin-size': margin-size
-    ),
-    styles: m-styles(map-get($utils, 'm', value))
+    value: map-get($values, m),
+    styles: m-styles(map-get($values, m))
   ),
   'p': (
     options-1: $directions-1,
     options-2: $abstract-points-2,
-    value: (
-      'padding-directions': padding-directions,
-      'padding-size': padding-size
-    ),
-    styles: p-styles(map-get($utils, 'p', value))
+    value: map-get($values, p),
+    styles: p-styles(map-get($values, p))
   )
 );
+
+
+@each $utilityTitle, $utility in $utils {
+  //@if (map-has-key($utility, options-1)) {
+  //  
+  //}
+
+  @debug $utilityTitle, $utility;
+}
