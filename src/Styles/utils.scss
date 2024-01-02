@@ -1,8 +1,8 @@
 //!BG, BORDERS, TEXT-COLORS, DISPLAYS LINK, UNDERLINE, OPACITY, POSITION, SHADOW, SIZING, TEXT, VIZIBILITY, SPACES, HOVER and ACTIVE
 
-$utils: (
-  'bg': (
-    options: (
+$root: (
+  options: (
+    $states: (
       'primary': primary, 
       'secondary': secondary, 
       'success': success, 
@@ -10,94 +10,32 @@ $utils: (
       'secondary-accent': secondary-accent, 
       'danger': danger
     ),
-    styles: (
-      background-color: colors
-    )
-  ),
-  'bg-gradient': (
-    options: (
-      'primary': primary, 
-      'secondary': secondary, 
-      'success': success, 
-      'accent': accent, 
-      'secondary-accent': secondary-accent, 
-      'danger': danger
-    ),
-    styles: (
-      background-image: gradients
-    )
-  ),
-  'bg-opacity': (
-    options: (
+    $abstract-points-1: (
       '0': 0,
       '25': .25,
       '50': .50,
       '75': .75,
       '100': 1
     ),
-    requires: (
-      'bg'
-    ),
-    alternative-requires: (
-      'bg-gradient'
-    ),
-    styles: (
-      --bg-color-opacity: opacities
-    )
-  ),
-  'border': (
-    options-1: (
-      'primary': primary, 
-      'secondary': secondary, 
-      'success': success, 
-      'accent': accent, 
-      'secondary-accent': secondary-accent, 
-      'danger': danger
-    ),
-    options-2: (
-      'top': top, 
-      'right': right, 
-      'bottom': bottom, 
-      'left': left
-    ),
-    options-3: (
+    $abstract-points-2: (
       '1': 1,
       '2': 2,
       '3': 3,
       '4': 4,
       '5': 5 
     ),
-    styles: (
-      border: borders
-    )
-  ),
-  'br': (
-    options: ( 
-     '1': 1,
-     '2': 2,
-     '3': 3,
-     '4': 4,
-     '5': 5 
+    $abstract-states: (
+      'all': all,
+      'auto': auto,
+      'none': none
     ),
-    styles: (
-      border-radius: border-radii
-    )
-  ),
-  'text-color': (
-    options: (
-      'primary': primary, 
-      'secondary': secondary, 
-      'success': success, 
-      'accent': accent, 
-      'secondary-accent': secondary-accent, 
-      'danger': danger
+    $directions: (
+      'top': top, 
+      'right': right, 
+      'bottom': bottom, 
+      'left': left
     ),
-    styles: (
-      color: colors
-    )
-  ),
-  'display': (
-    options: (
+    $displays: (
       'none': none,
       'inline': inline,
       'block': block,
@@ -106,53 +44,99 @@ $utils: (
       'inline-flex': inline-flex,
       'grid': grid
     ),
-    styles: (
-      display: displays
-    )
-  ),
-  'user-select': (
-    options: (
-      'all': all,
-      'auto': auto,
-      'none': none
-    ),
-    styles: (
-      user-select: user-selects
-    )
-  ),
-  'pointer-events': (
-    options: (
-      'all': all,
-      'auto': auto,
-      'none': none
-    ),
-    styles: (
-      pointer-events: pointer-events
-    )
-  ),
-  'underline': (
-    options-1: (
-      'primary': primary, 
-      'secondary': secondary, 
-      'success': success, 
-      'accent': accent, 
-      'secondary-accent': secondary-accent, 
-      'danger': danger
-    ),
-    options-2: (
+    $borderline-styles: (
       'solid': solid,
       'double': double,
       'dotted': dotted,
       'dashed': dashed,
       'wavy': wavy
+    )
+  )
+);
+
+$utils: (
+  'bg': (
+    options: $states,
+    value: colors,
+    styles: (
+      --bg-color-opacity: 1,
+      background-color: hsl(hue(colors), saturation(colors), lightness(colors), 
+        var(--bg-color-opacity))
+    )
+  ),
+  'bg-gradient': (
+    options: $states,
+    value: gradients,
+    styles: (
+      background-image: gradients
+    )
+  ),
+  'bg-opacity': (
+    options: $abstract-points-1,
+    requires: (
+      'bg'
     ),
-    options-3: (
-      '1': 1,
-      '2': 2,
-      '3': 3,
-      '4': 4,
-      '5': 5 
+    alternative-requires: (
+      'bg-gradient'
     ),
+    value: opacities,
+    styles: (
+      --bg-color-opacity: opacities
+    )
+  ),
+  'border': (
+    options-1: $states,
+    options-2: $directions,
+    options-3: $abstract-points-2,
+    value: borders,
+    styles: (
+      border: borders
+    )
+  ),
+  'br': (
+    options: $abstract-points-2,
+    value: border-radii,
+    styles: (
+      border-radius: border-radii
+    )
+  ),
+  'text-color': (
+    options: $states,
+    value: colors,
+    styles: (
+      color: colors
+    )
+  ),
+  'display': (
+    options: $displays,
+    value: displays
+    styles: (
+      display: displays
+    )
+  ),
+  'user-select': (
+    options: $abstract-states,
+    value: user-selects,
+    styles: (
+      user-select: user-selects
+    )
+  ),
+  'pointer-events': (
+    options: $abstract-states,
+    value: pointer-events,
+    styles: (
+      pointer-events: pointer-events
+    )
+  ),
+  'underline': (
+    options-1: $states,
+    options-2: $borderline-styles,
+    options-3: $abstract-points-2,
+    value: (
+      colors,
+      decoration-styles,
+      underline-offsets
+    )
     styles: (
       text-decoration: underline colors decoration-styles
       text-underline-offset: underline-offsets
