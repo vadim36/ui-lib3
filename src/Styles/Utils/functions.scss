@@ -15,7 +15,7 @@
 @function bg-opacity-styles($value) {
   @return (
     --bg-color-opacity: $value,
-    --gradient-color: $value
+    --gradient-opacity: $value
   );
 }
 

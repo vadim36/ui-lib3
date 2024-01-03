@@ -26,6 +26,15 @@
   --secondary-accent-color: hsl( var(--h-secondary-accent), var(--s-100), var(--l-50));
   --success-color: hsl( var(--h-success), var(--s-50), var(--l-50));
   --danger-color: hsl( var(--h-primary), var(--s-75), var(--l-55));
+
+  --gradient-deg: to bottom right;
+  --primary-border-size-point: 1px;
+  --primary-border-radius-point: 1rem;
+  --primary-underline-offset-point: 1px;
+  --primary-shadow-point: 1rem;
+  --primary-font-size-point: 1rem;
+  --primary-margin-point: 1rem;
+  --primary-paddint-point: 1rem;
 }
 
 $values: (
@@ -47,34 +56,40 @@ $values: (
   ),
   gradients: (
     'primary': linear-gradient(
-      to bottom right,
-      hsl(var(--hsl-primary-color), var(--gradient-color)),
-      hsl(var(--hsl-primary-color), .5)
+      var(--gradient-deg),
+      hsl(var(--hsl-primary-color), var(--gradient-opacity)),
+      hsl(var(--hsl-primary-color)), 
+      calc(var(--gradient-opacity) - .5)
     ),
     'secondary': linear-gradient(
-      to bottom right,
+      var(--gradient-deg),
       hsl(var(--hsl-secondary-color), var(--gradient-color)),
-      hsl(var(--hsl-secondary-color), .5)
+      hsl(var(--hsl-secondary-color), 
+      calc(var(--gradient-opacity) - .5))
     ),
     'success': linear-gradient(
-      to bottom right,
+      var(--gradient-deg),
       hsl(var(--hsl-success-color), var(--gradient-color)),
-      hsl(var(--hsl-success-color), .5)
+      hsl(var(--hsl-success-color), 
+      calc(var(--gradient-opacity) - .5))
     ),
     'accent': linear-gradient(
-      to bottom right,
+      var(--gradient-deg),
       hsl(var(--hsl-accent-color), var(--gradient-color)),
-      hsl(var(--hsl-accent-color), .5)
+      hsl(var(--hsl-accent-color), 
+      calc(var(--gradient-opacity) - .5))
     ),
     'secondary-accent': linear-gradient(
-      to bottom right,
+      var(--gradient-deg),
       hsl(var(--hsl-secondary-accent-color), var(--gradient-color)),
-      hsl(var(--hsl-secondary-accent-color), .5)
+      hsl(var(--hsl-secondary-accent-color), 
+      calc(var(--gradient-opacity) - .5))
     ),
     'danger': linear-gradient(
-      to bottom right,
+      var(--gradient-deg),
       hsl(var(--hsl-danger-color), var(--gradient-color)),
-      hsl(var(--hsl-danger-color), .5)
+      hsl(var(--hsl-danger-color), 
+      calc(var(--gradient-opacity) - .5))
     )
   ),
   bg-opacities: (
@@ -99,11 +114,11 @@ $values: (
     'left': left
   ),
   border-sizes: (
-    '1': 1px,
-    '2': 2px,
-    '3': 3px,
-    '4': 4px,
-    '5': 5px 
+    '1': calc(var(--primary-border-size-point) * 1),
+    '2': calc(var(--primary-border-size-point) * 2),
+    '3': calc(var(--primary-border-size-point) * 3),
+    '4': calc(var(--primary-border-size-point) * 4),
+    '5': calc(var(--primary-border-size-point) * 5) 
   ),
   border-styles: (
     'solid': solid,
@@ -113,11 +128,11 @@ $values: (
     'wavy': wavy
   ),
   border-radii: (
-    '1': .25rem,
-    '2': .375rem,
-    '3': .5rem,
-    '4': .7rem,
-    '5': 1rem 
+    '1': calc(var(--primary-border-radius-point) * .25),
+    '2': calc(var(--primary-border-radius-point) * .375),
+    '3': calc(var(--primary-border-radius-point) * .5),
+    '4': calc(var(--primary-border-radius-point) * .7),
+    '5': calc(var(--primary-border-radius-point) * 1)
   ),
   text-colors: (
     'primary': var(--hsl-primary-color),
@@ -162,11 +177,11 @@ $values: (
     'wavy': wavy
   ),
   underline-offsets: (
-    '1': 1px,
-    '2': 2px,
-    '3': 3px,
-    '4': 4px,
-    '5': 5px
+    '1': calc(var(--primary-underline-offset-point) * 1),
+    '2': calc(var(--primary-underline-offset-point) * 2),
+    '3': calc(var(--primary-underline-offset-point) * 3),
+    '4': calc(var(--primary-underline-offset-point) * 4),
+    '5': calc(var(--primary-underline-offset-point) * 5)
   ),
   opacities: (
     '0': 0,
@@ -190,11 +205,21 @@ $values: (
     'sticky': sticky
   ),
   shadows: (
-    '1': 0 .125rem .25rem hsl(var(--hsl-primary-color), .075),          
-    '2': 0 .5rem .75rem hsl(var(--hsl-primary-color), .15),
-    '3': 0 .55rem 1rem hsl(var(--hsl-primary-color), .175),
-    '4': 0 .75rem 1.25rem hsl(var(--hsl-primary-color), .175),
-    '5': 0 1rem 2rem hsl(var(--hsl-primary-color), .175),
+    '1': 0 calc(var(--primary-shadow-point) * .125) 
+           calc(var(--primary-shadow-point) * .25) 
+           hsl(var(--hsl-primary-color), .75),
+    '2': 0 calc(var(--primary-shadow-point) * .5) 
+           calc(var(--primary-shadow-point) * .75) 
+           hsl(var(--hsl-primary-color), .75),
+    '3': 0 calc(var(--primary-shadow-point) * .55) 
+           calc(var(--primary-shadow-point) * 1) 
+           hsl(var(--hsl-primary-color), .75),
+    '4': 0 calc(var(--primary-shadow-point) * .75) 
+           calc(var(--primary-shadow-point) * 1.25) 
+           hsl(var(--hsl-primary-color), .75),
+    '5': 0 calc(var(--primary-shadow-point) * 1) 
+           calc(var(--primary-shadow-point) * 2) 
+           hsl(var(--hsl-primary-color), .75),
   ),
   widths: (
     '0': calc(0 * 100%),
@@ -231,11 +256,11 @@ $values: (
     'capitalize': capitalize,
   ),
   font-sizes: (
-    '1': 1.25rem,
-    '2': 1.5rem,
-    '3': 1.75rem,
-    '4': 2rem,
-    '5': 2.5rem 
+    '1': calc(var(--primary-font-size-point) * 2.5),
+    '2': calc(var(--primary-font-size-point) * 2),
+    '3': calc(var(--primary-font-size-point) * 1.75),
+    '4': calc(var(--primary-font-size-point) * 1.5),
+    '5': calc(var(--primary-font-size-point) * 1.25) 
   ),
   font-weights: (
     'lighter': lighter,
@@ -254,11 +279,37 @@ $values: (
     'primary': primary,
     'monospace': monospace
   ),
-  text-decorations: (),
-  margin-directions: (),
-  margin-sizes: (),
-  padding-directions: (),
-  padding-size: ()
+  text-decorations: (
+    'underline': underline,
+    'line-through': line-through,
+    'none': none
+  ),
+  margin-directions: (
+    'top': top, 
+    'right': right, 
+    'bottom': bottom, 
+    'left': left
+  ),
+  margin-sizes: (
+    '1': calc(var(--primary-margin-point) * .25),
+    '2': calc(var(--primary-margin-point) * .5),
+    '3': calc(var(--primary-margin-point) * 1),
+    '4': calc(var(--primary-margin-point) * 1.5),
+    '5': calc(var(--primary-margin-point) * 3)
+  ),
+  padding-directions: (
+    'top': top, 
+    'right': right, 
+    'bottom': bottom, 
+    'left': left
+  ),
+  padding-size: (
+    '1': calc(var(--primary-paddint-point) * .25),
+    '2': calc(var(--primary-paddint-point) * .5),
+    '3': calc(var(--primary-paddint-point) * 1),
+    '4': calc(var(--primary-paddint-point) * 1.5),
+    '5': calc(var(--primary-paddint-point) * 3)
+  )
 );
 
 @debug $values;
