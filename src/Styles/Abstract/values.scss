@@ -77,7 +77,7 @@ $values: (
       hsl(var(--hsl-danger-color), .5)
     )
   ),
-  opacities: (
+  bg-opacities: (
     '0': 0,
     '25': .25,
     '50': .50,
@@ -162,8 +162,103 @@ $values: (
     'wavy': wavy
   ),
   underline-offsets: (
-    
-  )
+    '1': 1px,
+    '2': 2px,
+    '3': 3px,
+    '4': 4px,
+    '5': 5px
+  ),
+  opacities: (
+    '0': 0,
+    '25': .25,
+    '50': .50,
+    '75': .75,
+    '100': 1
+  ),
+  opacities-hover: (
+    '0': 0,
+    '25': .25,
+    '50': .50,
+    '75': .75,
+    '100': 1
+  ),
+  positions: (
+    'static': static,
+    'relative': relative,
+    'absolute': absolute,
+    'fixed': fixed,
+    'sticky': sticky
+  ),
+  shadows: (
+    '1': 0 .125rem .25rem hsl(var(--hsl-primary-color), .075),          
+    '2': 0 .5rem .75rem hsl(var(--hsl-primary-color), .15),
+    '3': 0 .55rem 1rem hsl(var(--hsl-primary-color), .175),
+    '4': 0 .75rem 1.25rem hsl(var(--hsl-primary-color), .175),
+    '5': 0 1rem 2rem hsl(var(--hsl-primary-color), .175),
+  ),
+  widths: (
+    '0': calc(0 * 100%),
+    '25': calc(.25 * 100%),
+    '50': calc(.50 * 100%),
+    '75': calc(.75 * 100%),
+    '100': calc(1 * 100%)
+  ),
+  heights: (
+    '0': calc(0 * 100%),
+    '25': calc(.25 * 100%),
+    '50': calc(.50 * 100%),
+    '75': calc(.75 * 100%),
+    '100': calc(1 * 100%)
+  ),
+  text-aligns: (
+    'start': start,
+    'center': center,
+    'end': end
+  ),
+  text-wraps: (
+    'wrap': wrap,
+    'nowrap': nowrap
+  ),
+  word-breaks: (
+    'normal': normal,
+    'break-all': break-all,
+    'keep-all': keep-all,
+    'break-word': break-word
+  ),
+  text-transforms: (
+    'lowercase': lowercase,
+    'uppercase': uppercase,
+    'capitalize': capitalize,
+  ),
+  font-sizes: (
+    '1': 1.25rem,
+    '2': 1.5rem,
+    '3': 1.75rem,
+    '4': 2rem,
+    '5': 2.5rem 
+  ),
+  font-weights: (
+    'lighter': lighter,
+    'light': light,
+    'normal': normal,
+    'medium': medium,
+    'semibold': semibold,
+    'bold': bold,
+    'bolder': bolder
+  ),
+  font-styles: (
+    'normal': normal,
+    'italic': italic
+  ),
+  fonts: (
+    'primary': primary,
+    'monospace': monospace
+  ),
+  text-decorations: (),
+  margin-directions: (),
+  margin-sizes: (),
+  padding-directions: (),
+  padding-size: ()
 );
 
 @debug $values;

@@ -96,7 +96,7 @@
 
 @function shadow-styles($value) {
   @return (
-    shadow: 0 calc($value / 8) calc ($value / 1.5) color
+    shadow: $value
   );
 }
 
