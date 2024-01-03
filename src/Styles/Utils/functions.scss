@@ -1,9 +1,10 @@
 @function bg-styles($value) {
-  @return (
-    --bg-color-opacity: 1,
-    background-color: hsla(hue($value), saturation($value), lightness($value), 
-      var(--bg-color-opacity))
-  );
+  @each $valueTitle, $valueBody in $value {
+    @return (
+      --bg-color-opacity: 1,
+      background-color: hsla($valueBody, var(--bg-color-opacity))
+    );
+  }
 }
 
 @function bg-gradient-styles($value) {
@@ -20,7 +21,7 @@
 }
 
 @function border-styles($value) {
-  $border-colors: map-get($value, border-colors);
+  $border-color: map-get($value, border-colors);
   $border-direction: map-get($value, border-directions);
   $border-size: map-get($value, border-sizes);
   $border-style: map-get($value, border-styles);
@@ -101,15 +102,19 @@
 }
 
 @function w-styles($value) {
-  @return (
-    width: calc($value * 1%)
-  );
+  @each $valueTitle, $valueBody in $value { 
+    @return (
+      width: calc($valueBody * 1%)
+    );
+  }
 }
 
 @function h-styles($value) {
-  @return (
-    width: calc($value * 1%)
-  );
+  @each $valueTitle, $valueBody in $value {  
+    @return (
+      width: calc($valueBody * 1%)
+    );
+  }
 }
 
 @function text-align-styles($value) {
@@ -154,22 +159,42 @@
   );
 }
 
-@function m-styles($value) {
-  $direction: map-get($value, margin-directions);
-  $size: map-get($value, margin-size);
-
+@function font-styles($value) {
   @return (
-    margin: calc($size * .25rem),
-    margin-#{$direction}: calc($size * .25rem)
+    font-family: $value
   );
 }
 
-@function p-styles($value) {
-  $direction: map-get($value, padding-directions);
-  $size: map-get($value, padding-size);
-
+@function text-decoration-styles($value) {
   @return (
-    padding: calc($size * .25rem),
-    padding-#{$direction}: calc($size * .25rem)
+    text-decoration: $value
   );
+}
+
+@function m-styles($value) {
+  $direction: map-get($value, 'margin-direction');
+  $size: map-get($value, 'margin-size');
+
+  @each $directionTitle, $directionBody in $direction {
+    @each $sizeTitle, $sizeBody in $size {
+      @return (
+        margin: calc($sizeBody * .25rem),
+        margin-#{$directionBody}: calc($sizeBody * .25rem)
+      );
+    }
+  }
+}
+
+@function p-styles($value) {
+  $direction: map-get($value, 'padding-direction');
+  $size: map-get($value, 'padding-size');
+
+  @each $directionTitle, $directionBody in $direction {
+    @each $sizeTitle, $sizeBody in $size {
+      @return (
+        padding: calc($sizeBody * .25rem),
+        padding-#{$directionBody}: calc($sizeBody * .25rem)
+      );
+    }
+  }
 }

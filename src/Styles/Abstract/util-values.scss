@@ -50,12 +50,12 @@ $util-values: (
     'danger': var(--hsl-danger-color)
   ),
   'bg': ( 
-    'primary': var(--primary-color),
-    'secondary': var(--secondary-color),
-    'accent': var(--accent-color),   
-    'secondary-accent': var(--secondary-accent-color),
-    'success': var(--success-color),
-    'danger': var(--danger-color)
+    'primary': var(--hsl-primary-color),
+    'secondary': var(--hsl-secondary-color),
+    'accent': var(--hsl-accent-color),   
+    'secondary-accent': var(--hsl-secondary-accent-color),
+    'success': var(--hsl-success-color),
+    'danger': var(--hsl-danger-color)
   ),
   'bg-gradient': (
     'primary': linear-gradient(
@@ -291,13 +291,13 @@ $util-values: (
     'none': none
   ),
   'm': (
-    'margin-directions': (
+    'margin-direction': (
       'top': top, 
       'right': right, 
       'bottom': bottom, 
       'left': left
     ),
-    'margin-sizes': (
+    'margin-size': (
       '1': calc(var(--primary-margin-point) * .25),
       '2': calc(var(--primary-margin-point) * .5),
       '3': calc(var(--primary-margin-point) * 1),
@@ -306,7 +306,7 @@ $util-values: (
     ),
   ),
   'p': (
-    'padding-directions': (
+    'padding-direction': (
       'top': top, 
       'right': right, 
       'bottom': bottom, 

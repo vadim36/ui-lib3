@@ -143,7 +143,7 @@ $utils: (
     styles: font-styles(map-get($util-values, 'font'))
   ),
   'text-decoration': (
-    options: map-get(options, text-decorations),
+    options: map-get($util-options, text-decorations),
     value: map-get($util-values, 'text-decoration'),
     styles: text-decoration-styles(map-get($util-values, 'text-decoration'))
   ),
@@ -151,8 +151,8 @@ $utils: (
     options-1: map-get($util-options, directions-1),
     options-2: map-get($util-options, abstract-points-2),
     value: (
-      map-get($util-values, 'margin-directions'),
-      map-get($util-values, 'margin-sizes'),
+      map-get($util-values, 'm','margin-direction'),
+      map-get($util-values, 'm','margin-size'),
     ), 
     styles: m-styles(map-get($util-values, 'm'))
   ),
@@ -160,8 +160,8 @@ $utils: (
     options-1: map-get($util-options, directions-1),
     options-2: map-get($util-options, abstract-points-2),
     value: (
-      map-get($util-values, 'padding-directions'),
-      map-get($util-values, 'padding-sizes'),
+      map-get($util-values, 'p','padding-direction'),
+      map-get($util-values, 'p','padding-size'),
     ),
     styles: p-styles(map-get($util-values, 'p'))
   )
