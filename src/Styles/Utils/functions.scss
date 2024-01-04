@@ -112,7 +112,7 @@
 @function h-styles($value) {
   @each $valueTitle, $valueBody in $value {  
     @return (
-      width: calc($valueBody * 1%)
+      height: calc($valueBody * 1%)
     );
   }
 }

@@ -1,5 +1,76 @@
 @use 'utils' as *;
 
-@each $utilityTitle, $utility in $utils {
-  @debug $utilityTitle, $utility;
+@each $utility-title, $utility in $utils {
+  @if (map-get($utility, values) == null) {
+    @debug map-get($utility, values);
+    @error 'no field "values"';
+  }
+
+  @if (type-of(map-get($utility, values)) != 'map') {
+    @debug map-get($utility, values), type-of(map-get($utility, values));
+    @error 'incorrect value of field "values"';
+  }
+
+  @if (map-get($utility, styles) == null) {
+    @debug map-get($utility, styles);
+    @error 'no field "styles"';
+  }
+
+  @if (type-of(map-get($utility, styles)) != 'map' and
+      type-of(map-get($utility, styles)) != 'string' and
+      type-of(map-get($utility, styles)) != 'list') {
+    @debug map-get($utility, styles), type-of(map-get($utility, styles));
+    @error 'incorrect value of field "styles"';
+  }
+
+  @each $value-title, $value in map-get($utility, values) {
+    .#{$utility-title}-#{$value-title} {
+      @each $style-property in map-get($utility, styles) {
+        @if (type-of($style-property) == 'map' or type-of($style-property) == 'list') {
+          @each $property, $constant-value in $style-property {
+            #{$property}: $constant-value;
+          }
+        } @else {
+          #{$style-property}: $value; 
+        }
+      }
+    } 
+  }
+}
+
+@each $utility-title, $utility in $utils {
+  @if (map-has-key($utility, extends)) {
+    $class: map-get($utils, map-get($utility, extends));
+    
+    @each $value-title, $value in map-get($utility, values) {
+        .#{map-get($utility, extends)}-#{$value-title} {
+          @each $style-property in map-get($utility, styles) {
+            @if ($style-property == class) {
+               #{map-get($class, styles)}: $value;
+            } @else if (type-of($style-property) == 'map' or type-of($style-property) == 'list') {
+              @each $property, $constant-value in $style-property {
+                #{$property}: $constant-value;
+              }
+            } @else {
+              #{$style-property}: $value; 
+            }
+          }
+        } 
+      }
+    
+  } @else {
+      @each $value-title, $value in map-get($utility, values) {
+        .#{$utility-title}-#{$value-title} {
+          @each $style-property in map-get($utility, styles) {
+            @if (type-of($style-property) == 'map' or type-of($style-property) == 'list') {
+              @each $property, $constant-value in $style-property {
+                #{$property}: $constant-value;
+              }
+            } @else {
+              #{$style-property}: $value; 
+            }
+          }
+        } 
+      }  
+    }
 }
