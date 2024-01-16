@@ -1,0 +1,135 @@
+@use '../Abstract/util-values.scss' as *;
+
+$utils: (
+  'bg': (
+    values: map-get($util-values, 'bg'),
+    styles: (
+      (--bg-color-opacity: 1),
+      background-color
+    )
+  ),
+  'bg-gradient': (
+    values: map-get($util-values, 'bg-gradient'),
+    styles: (
+      background-image
+    )
+  ),
+  'bg-opacity': (
+    values: map-get($util-values, 'bg-opacity'),
+    styles: (
+      --bg-color-opacity,
+      --gradient-opacity
+    )
+  ),
+  'border': (
+    value: (
+      map-get($util-values, 'border', 'border-color'),
+      map-get($util-values, 'border', 'border-direction'),
+      map-get($util-values, 'border', 'border-size'),
+      map-get($util-values, 'border', 'border-style')
+    ),
+    styles: border-styles(map-get($util-values, 'border'))
+  ),
+  'br': (
+    value: map-get($util-values, 'br'),
+    styles: br-styles(map-get($util-values, 'br'))
+  ),
+  'text-color': (
+    value: map-get($util-values, 'text-color'),
+    styles: text-color-styles(map-get($util-values, 'text-color'))
+  ),
+  'display': (
+    value: map-get($util-values, 'display'),
+    styles: display-styles(map-get($util-values, 'display'))
+  ),
+  'user-select': (
+    value: map-get($util-values, 'user-select'),
+    styles: user-select-styles(map-get($util-values, 'user-select'))
+  ),
+  'pointer-events': (
+    value: map-get($util-values, 'pointer-events'),
+    styles: pointer-event-styles(map-get($util-values, 'pointer-events'))
+  ),
+  'underline': (
+    value: (
+      map-get($util-values, 'underline-colors'),
+      map-get($util-values, 'underline-decoration-styles'),
+      map-get($util-values, 'underline-offsets'),
+    ),
+    styles: underline-styles(map-get($util-values, 'underline'))
+  ),
+  'opacity': (
+    value: map-get($util-values, 'opacity'),
+    styles: opacity-styles(map-get($util-values, 'opacity'))
+  ),
+  'opacity-hover': (
+    value: map-get($util-values, 'opacity-hover'),
+    styles: opacity-hover-styles(map-get($util-values, 'opacity-hover'))
+  ),
+  'position': (
+    value: map-get($util-values, 'position'),
+    styles: position-styles(map-get($util-values, 'position'))
+  ),
+  'shadow': (
+    value: map-get($util-values, 'shadow'),
+    styles: shadow-styles(map-get($util-values, 'shadow'))
+  ),
+  'w': (
+    value: map-get($util-values, 'w'),
+    styles: w-styles(map-get($util-values, 'w'))
+  ),
+  'h': (
+    value: map-get($util-values, 'h'),
+    styles: h-styles(map-get($util-values, 'h'))
+  ),
+  'text-align': (
+    value: map-get($util-values, 'text-align'),
+    styles: text-align-styles(map-get($util-values, 'text-align'))
+  ),
+  'text-wrap': (
+    value: map-get($util-values, 'text-wrap'),
+    styles: text-wrap-styles(map-get($util-values, 'text-wrap'))    
+  ),
+  'word-break': (
+    value: map-get($util-values, 'word-break'),
+    styles: word-break-styles(map-get($util-values, 'word-break'))  
+  ),
+  'text-transform': (
+    value: map-get($util-values, 'text-transform'),
+    styles: text-transform-styles(map-get($util-values, 'text-transform'))
+  ),
+  'fz': (
+    value: map-get($util-values, 'fz'),
+    styles: fz-styles(map-get($util-values, 'fz'))
+  ),
+  'font-weight': (
+    value: map-get($util-values, 'font-weight'),
+    styles: font-weight-styles(map-get($util-values, 'font-weight'))
+  ),
+  'font-style': (
+    value: map-get($util-values, 'font-style'),
+    styles: font-style-styles(map-get($util-values, 'font-style'))
+  ),
+  'font': (
+    value: map-get($util-values, 'font'),
+    styles: font-styles(map-get($util-values, 'font'))
+  ),
+  'text-decoration': (
+    value: map-get($util-values, 'text-decoration'),
+    styles: text-decoration-styles(map-get($util-values, 'text-decoration'))
+  ),
+  'm': (
+    value: (
+      map-get($util-values, 'm','margin-direction'),
+      map-get($util-values, 'm','margin-size'),
+    ), 
+    styles: m-styles(map-get($util-values, 'm'))
+  ),
+  'p': (
+    value: (
+      map-get($util-values, 'p','padding-direction'),
+      map-get($util-values, 'p','padding-size'),
+    ),
+    styles: p-styles(map-get($util-values, 'p'))
+  )
+);
